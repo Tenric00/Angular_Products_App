@@ -1,0 +1,48 @@
+<div class="container">
+    <h2>Products</h2>
+
+    <div *ngIf="loading" class="loading">Loading…</div>
+
+    <section class="section">
+        <h3>Active Products ({{ active.length }})</h3>
+        <div class="grid header">
+            <div>Name</div>
+            <div class="desc">Description</div>
+            <div class="price">Price</div>
+        </div>
+
+        <div *ngIf="active.length === 0" class="empty">No active products.</div>
+
+        <div *ngFor="let p of active" class="grid row">
+            <div class="name">
+                <div class="title">{{ p.name }}</div>
+            </div>
+            <div class="desc">{{ p.description }}</div>
+            <div class="price">
+                {{ p.price | currency }}
+                <button class="btn-delete" (click)="onDelete(p)" title="Mark inactive">Deactivate</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="section inactive">
+        <h3>Inactive Products ({{ inactive.length }})</h3>
+
+        <div class="grid header">
+            <div>Name</div>
+            <div class="desc">Description</div>
+            <div class="price">Price</div>
+        </div>
+
+        <div *ngIf="inactive.length === 0" class="empty">No inactive products.</div>
+
+        <div *ngFor="let p of inactive" class="grid row inactive-row">
+            <div class="name">
+                <div class="title">{{ p.name }}</div>
+                <div class="muted small">Inactive: {{ p.inActiveDate | date:'short' }}</div>
+            </div>
+            <div class="desc">{{ p.description }}</div>
+            <div class="price">{{ p.price | currency }}</div>
+        </div>
+    </section>
+</div>

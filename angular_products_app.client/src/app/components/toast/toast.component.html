@@ -1,0 +1,7 @@
+<div class="toast-container">
+  @for(m of messages; track m) {
+    <div class="toast" ng-class="m.level">
+      {{ m.text }}
+    </div>
+  }
+</div>

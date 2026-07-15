@@ -1,0 +1,87 @@
+<div class="container">
+  <!-- <app-toast></app-toast> -->
+
+  <h2>Products</h2>
+
+  <div class="controls">
+    <label>
+      Page size:
+      <!--<select [(ngModel)]="pageSize" (change)="changePageSize($event.target.value)">-->
+      <select [(ngModel)]="pageSize" (ngModelChange)="changePageSize($event)">
+        <option *ngFor="let s of pageSizeOptions" [value]="s">{{ s }}</option>
+      </select>
+    </label>
+
+    <label>
+      Filter:
+      <input type="text" [(ngModel)]="nameFilter" (keyup.enter)="loadActive(); loadInactive();" placeholder="name filter" />
+    </label>
+  </div>
+
+  <nav class="tabs">
+    <button (click)="view='active'" [class.active]="view==='active'">Active</button>
+    <button (click)="view='inactive'" [class.active]="view==='inactive'">Inactive</button>
+  </nav>
+
+  <section class="section" *ngIf="view === 'active'">
+    <h3>Active Products Test ({{ activePaged?.totalCount ?? 0 }})</h3>
+
+    <div class="grid header">
+      <div>Name</div>
+      <div class="desc">Description</div>
+      <div class="price">Price</div>
+    </div>
+
+    <div *ngIf="active.length === 0" class="empty">No active products.</div>
+
+    <div class="grid row">
+      <ng-container *ngFor="let p of active">
+        <div class="name">
+          <div class="title">{{ p.name }}</div>
+        </div>
+        <div class="desc">{{ p.description }}</div>
+        <div class="price">
+          {{ p.price | currency }}
+          <button class="btn-delete" (click)="onDelete(p);" title="Mark inactive">Deactivate</button>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="pager" *ngIf="activePaged">
+      <button (click)="changeActivePage(activePage-1);" [disabled]="activePage<=1">Prev</button>
+      <span>Page {{ activePage }} / {{ Math.ceil((activePaged.totalCount || 0) / (activePaged.pageSize || 1)) || 1 }}</span>
+      <button (click)="changeActivePage(activePage+1);" [disabled]="activePage >= Math.ceil((activePaged.totalCount || 0) / (activePaged.pageSize || 1));">Next</button>
+    </div>
+  </section>
+
+  <section class="section inactive" *ngIf="view === 'inactive'">
+    <h3>Inactive Products ({{ inactivePaged?.totalCount ?? 0 }})</h3>
+
+    <div class="grid header">
+      <div>Name</div>
+      <div class="desc">Description</div>
+      <div class="price">Price</div>
+    </div>
+
+    <div *ngIf="inactive.length === 0" class="empty">No inactive products Test.</div>
+
+    <div class="grid row">
+      <ng-container *ngFor="let p of inactive">
+        <div class="name">
+          <div class="title">{{ p.name }}</div>
+        </div>
+        <div class="desc">{{ p.description }}</div>
+        <div class="price">
+          {{ p.price | currency }}
+          <!-- <button class="btn-delete" (click)="onDelete(p);" title="Mark inactive">Deactivate</button>-->
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="pager" *ngIf="inactivePaged">
+      <button (click)="changeInactivePage(inactivePage-1);" [disabled]="inactivePage<=1">Prev</button>
+      <span>Page {{ inactivePage }} / {{ Math.ceil((inactivePaged.totalCount || 0) / (inactivePaged.pageSize || 1)) || 1 }}</span>
+      <button (click)="changeInactivePage(inactivePage+1);" [disabled]="inactivePage >= Math.ceil((inactivePaged.totalCount || 0) / (inactivePaged.pageSize || 1));">Next</button>
+    </div>
+  </section>
+</div>

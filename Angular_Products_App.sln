@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37111.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Angular_Products_App.Server", "Angular_Products_App.Server\Angular_Products_App.Server.csproj", "{24FA44A7-29EF-4CD1-06D1-11C1CE16C201}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "angular_products_app.client", "angular_products_app.client\angular_products_app.client.esproj", "{CD7A1AA4-3624-4E01-17DF-619DBEA015F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Angular_Products_App.Server.Tests", "Angular_Products_App.Server.Tests\Angular_Products_App.Server.Tests.csproj", "{D70093DE-308B-1D2D-CCB8-AE845A29CCFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24FA44A7-29EF-4CD1-06D1-11C1CE16C201}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24FA44A7-29EF-4CD1-06D1-11C1CE16C201}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24FA44A7-29EF-4CD1-06D1-11C1CE16C201}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24FA44A7-29EF-4CD1-06D1-11C1CE16C201}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD7A1AA4-3624-4E01-17DF-619DBEA015F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD7A1AA4-3624-4E01-17DF-619DBEA015F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD7A1AA4-3624-4E01-17DF-619DBEA015F9}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{CD7A1AA4-3624-4E01-17DF-619DBEA015F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD7A1AA4-3624-4E01-17DF-619DBEA015F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD7A1AA4-3624-4E01-17DF-619DBEA015F9}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D70093DE-308B-1D2D-CCB8-AE845A29CCFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D70093DE-308B-1D2D-CCB8-AE845A29CCFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D70093DE-308B-1D2D-CCB8-AE845A29CCFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D70093DE-308B-1D2D-CCB8-AE845A29CCFF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EDF2A7C8-DEB7-4394-983D-38EB93DD6B19}
+	EndGlobalSection
+EndGlobal

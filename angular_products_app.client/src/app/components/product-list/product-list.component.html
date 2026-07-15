@@ -1,0 +1,104 @@
+<div class="container">
+  <!--<app-toast></app-toast>-->
+
+  <h2>Products</h2>
+
+  <div class="controls">
+    <label>
+      Page size:
+      <!--<select [(ngModel)]="pageSize" (change)="changePageSize($event.target.value)">-->
+      <select [(ngModel)]="pageSize" (ngModelChange)="changePageSize($event)">
+        @for(s of pageSizeOptions; track s) {
+        <option [value]="s">{{ s }}</option>
+        }
+      </select>
+    </label>
+
+    <label>
+      Filter:
+      <input type="text" [(ngModel)]="nameFilter" (keyup.enter)="loadActive(); loadInactive()" placeholder="name filter" />
+    </label>
+  </div>
+
+  <nav class="tabs">
+    <button (click)="view='active'" [class.active]="view==='active'">Active</button>
+    <button (click)="view='inactive'" [class.active]="view==='inactive'">Inactive</button>
+  </nav>
+
+  @if(view === 'active') {
+  <section class="section">
+    <h3>Active Products ({{ activePaged?.totalCount ?? 0 }})</h3>
+
+    <div class="grid header">
+      <div>Name</div>
+      <div class="desc">Description</div>
+      <div class="price">Price</div>
+    </div>
+
+    @if(active.length === 0) {
+    <div class="empty">No active products.</div>
+    }
+
+    <div class="grid row">
+
+      @for(p of active; track p) {
+      <div class="name">
+        <div class="title">{{ p.name }}</div>
+      </div>
+      <div class="desc">{{ p.description }}</div>
+      <div class="price">
+        {{ p.price | currency }}
+        <button class="btn-delete" (click)="onDelete(p)" title="Mark inactive">Deactivate</button>
+      </div>
+      }
+    </div>
+
+    @if(activePaged) {
+    <div class="pager">
+      <button (click)="changeActivePage(activePage-1)" [disabled]="activePage<=1">Prev</button>
+      <span>Page {{ activePage }} / {{ Math.ceil(activePaged.totalCount / activePaged.pageSize) || 1 }}</span>
+      <button (click)="changeActivePage(activePage+1)" [disabled]="activePage >= Math.ceil(activePaged.totalCount / activePaged.pageSize)">Next</button>
+    </div>
+    }
+  </section>
+  }
+
+
+  @if(view === 'inactive') {
+  <section class="section inactive">
+    <h3>Inactive Products ({{ inactivePaged?.totalCount ?? 0 }})</h3>
+
+    <div class="grid header">
+      <div>Name</div>
+      <div class="desc">Description</div>
+      <div class="price">Price</div>
+    </div>
+
+    @if(inactive.length === 0) {
+    <div class="empty">No inactive products.</div>
+    }
+
+    <div class="grid row">
+
+      @for(p of inactive; track p) {
+      <div class="name">
+        <div class="title">{{ p.name }}</div>
+      </div>
+      <div class="desc">{{ p.description }}</div>
+      <div class="price">
+        {{ p.price | currency }}
+        <!-- <button class="btn-delete" (click)="onDelete(p);" title="Mark inactive">Deactivate</button>-->
+      </div>
+      }
+    </div>
+
+    @if(inactivePaged) {
+    <div class="pager">
+      <button (click)="changeInactivePage(inactivePage-1)" [disabled]="inactivePage<=1">Prev</button>
+      <span>Page {{ inactivePage }} / {{ Math.ceil(inactivePaged.totalCount / inactivePaged.pageSize) || 1 }}</span>
+      <button (click)="changeInactivePage(inactivePage+1)" [disabled]="inactivePage >= Math.ceil(inactivePaged.totalCount / inactivePaged.pageSize)">Next</button>
+    </div>
+    }
+  </section>
+  }
+</div>
