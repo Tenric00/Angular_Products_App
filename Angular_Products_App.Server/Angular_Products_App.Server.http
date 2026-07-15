@@ -1,4 +1,4 @@
-@Angular_Products_App.Server_HostAddress = http://localhost:5193
+@Angular_Products_App.Server_HostAddress = http://localhost:[Port#]
 
 GET {{Angular_Products_App.Server_HostAddress}}/weatherforecast/
 Accept: application/json
