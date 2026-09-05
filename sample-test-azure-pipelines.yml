@@ -14,12 +14,18 @@ pool:
 jobs: 
 - job: Debug
   steps:
+
   - script: echo hello from the Debug build
+  
 - job: Release
   dependsOn: Debug
+
   steps:
+
   - script: echo This is the 2nd job
   - script: echo Hello, world!
-
   - script: from the Release build!
+  - script:
+      echo Add other tasks to build, test, and deploy your project.
+      echo See https://aka.ms/yaml
     displayName: 'Run a multi-line script'
