@@ -24,3 +24,4 @@ jobs:
 
   - script: echo This is the 2nd job
   - script: echo Hello, world!
+    displayName: 'Run a multi-line script'
