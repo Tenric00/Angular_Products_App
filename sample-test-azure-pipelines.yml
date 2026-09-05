@@ -18,7 +18,6 @@ jobs:
   - script: echo hello from the Debug build
   
 - job: Release
-  dependsOn: Debug
 
   steps:
 
